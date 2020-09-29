@@ -2,7 +2,6 @@ import discord
 
 async def main(self, message):
     user = message.author
-    message_parts = message.content.split()
 
     mention = message.mentions[0] or False
 
