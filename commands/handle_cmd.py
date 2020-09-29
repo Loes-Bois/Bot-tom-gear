@@ -8,7 +8,7 @@ async def handle(self, message):
     # Run command files here
     if (message_content == "tonight on bottom gear"):
         await btm_gear.main(self, message)
-    elif (message_content == "avatar"):
+    elif (message_content.startswith("avatar")):
         await avatar.main(self, message)
     else:
         await message.channel.send("Errrrny nice")
