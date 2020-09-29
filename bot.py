@@ -1,5 +1,11 @@
 import discord
 import os_helper
+import os
+
+# Load env variables
+from dotenv import load_dotenv
+load_dotenv()
+
 import commands.handle_cmd as cmds
 
 
@@ -24,7 +30,8 @@ class BottomBot(discord.Client):
 
 try:
     # Get the token
-    bot_token = os_helper.getEnvVar("BOT_TOKEN")
+    bot_token = os.getenv("BOT_TOKEN")
+
     if (bot_token is None):
         raise Exception("A token was not passed as a environment variable")
 

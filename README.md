@@ -7,7 +7,8 @@
     - discord.py (v1.4.1)
 
 ## Instructions to run:
-1) Store your discord bot token in a environment variable called `BOT_TOKEN`
+1) Run ``` pip install -r requirments.txt ``` to install the requirements
+1) Store your discord bot token in an environment variable called `BOT_TOKEN` in a .env file located in the root of your project
 2) Run the bot with the command: `python bot.py`
 
 ## Tonight on Bot-tom-gear:
