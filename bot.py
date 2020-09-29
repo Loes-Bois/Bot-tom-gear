@@ -22,7 +22,7 @@ class BottomBot(discord.Client):
             return
 
         if message.content.startswith(self.bot_keyword):
-            cmds.handle(self, message)
+            await cmds.handle(self, message)
 
         if message.content == "ping":
             await message.channel.send("pong")
