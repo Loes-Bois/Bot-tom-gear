@@ -1,9 +1,11 @@
 import discord
 import os_helper
+import commands.handle_cmd as cmds
+
 
 class BottomBot(discord.Client):
     # Set the token to pound on default
-    bot_keyword = "#" 
+    bot_keyword = "#"
 
     async def on_ready(self):
         print(f"Logged in as {self.user}!")
@@ -12,9 +14,13 @@ class BottomBot(discord.Client):
         # Dont respond on ourselves
         if message.author == self.user:
             return
-        
+
+        if message.content.startswith(self.bot_keyword):
+            cmds.handle(self, message)
+
         if message.content == "ping":
             await message.channel.send("pong")
+
 
 try:
     # Get the token
