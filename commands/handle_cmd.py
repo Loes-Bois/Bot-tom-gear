@@ -12,4 +12,3 @@ async def handle(self, message):
         await avatar.main(self, message)
     else:
         await message.channel.send("Errrrny nice")
-        
