@@ -1,6 +1,4 @@
-import commands.btm_gear as btm_gear
-import commands.avatar as avatar
-import commands.magic as magic
+from commands import btm_gear, avatar, magic
 
 async def handle(self, message):
     # Takes in a discord.py message
