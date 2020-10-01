@@ -16,5 +16,5 @@ async def find_recent_image(channel_id, message_id):
             if resp.status != 200:
                 messages = None
             messages = io.BytesIO(await resp.read())
-
+    return messages
     

@@ -66,7 +66,6 @@ def vertical_wave(img):
     for i in range(rows):
         for j in range(cols):
             offset_x = int(25.0 * math.sin(2 * 3.14 * i / 150))
-            offset_y = 0
             if j+offset_x < rows:
                 img_output[i,j] = img[i,(j+offset_x)%cols]
             else:
@@ -83,7 +82,6 @@ def horizontal_wave(img):
 
     for i in range(rows):
         for j in range(cols):
-            offset_x = 0
             offset_y = int(16.0 * math.sin(2 * 3.14 * j / 110))
             if i+offset_y < rows:
                 img_output[i,j] = img[(i+offset_y)%rows,j]
@@ -121,7 +119,6 @@ def concave_wave(img):
     for i in range(rows):
         for j in range(cols):
             offset_x = int(128.0 * math.sin(2 * 3.14 * i / (2*cols)))
-            offset_y = 0
             if j+offset_x < cols:
                 img_output[i,j] = img[i,(j+offset_x)%cols]
             else:
