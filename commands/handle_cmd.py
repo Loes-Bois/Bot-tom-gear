@@ -1,5 +1,4 @@
-import commands.btm_gear as btm_gear
-import commands.avatar as avatar
+from commands import btm_gear, avatar, magic
 
 async def handle(self, message):
     # Takes in a discord.py message
@@ -10,5 +9,7 @@ async def handle(self, message):
         await btm_gear.main(self, message)
     elif (message_content.startswith("avatar")):
         await avatar.main(self, message)
+    elif(message_content.startswith("magic")):
+        await magic.main(self, message)
     else:
         await message.channel.send("Errrrny nice")
