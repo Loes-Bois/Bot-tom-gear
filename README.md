@@ -16,3 +16,4 @@
 - [ ] 2. Kevin learns to code
 - [ ] 3. Sammy does some admin things
 - [ ] 4. Gavin plays minecraft
+- [x] 5. Dan might possibly have setup a webhook correctly
