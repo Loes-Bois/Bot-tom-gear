@@ -7,7 +7,6 @@ load_dotenv()
 
 import commands.handle_cmd as cmds
 
-
 class BottomBot(discord.Client):
     # Set the token to pound on default
     bot_keyword = "#"
@@ -25,7 +24,6 @@ class BottomBot(discord.Client):
 
         if message.content == "ping":
             await message.channel.send("pong")
-
 
 try:
     # Get the token
