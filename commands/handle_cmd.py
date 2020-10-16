@@ -1,4 +1,4 @@
-from commands import btm_gear, avatar, magik
+from commands import btm_gear, avatar, magik, tags
 
 async def handle(self, message):
     # Takes in a discord.py message
@@ -11,5 +11,7 @@ async def handle(self, message):
         await avatar.main(self, message)
     elif(message_content.startswith("magik")):
         await magik.main(self, message)
+    elif(message_content.startswith("tag") or message_content.startswith("tags") or message_content.startswith("t")):
+        await tags.main(self, message)
     else:
         await message.channel.send("Errrrny nice")
