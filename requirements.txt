@@ -2,3 +2,6 @@ discord.py==1.4.1
 python-dotenv==0.14.0
 numpy
 opencv-contrib-python==4.2.0.34
+pymongo
+wand
+dnspython
