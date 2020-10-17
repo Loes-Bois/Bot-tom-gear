@@ -20,7 +20,7 @@ async def main(self, message):
     else:
         await message.channel.send(embed=embed)  
 
-        
+
 def handle_tag_commands(command, message, message_parts):
     """
     Handles the different types of tag commands
@@ -58,11 +58,13 @@ def handle_tag_commands(command, message, message_parts):
 
         # error handling
         try:
-            x = tag_collection.insert_one(mydict)
+            tag_collection.insert_one(mydict)
         except mongo_error.DuplicateKeyError:
             embed = tags_commands.taginuse()
-        except:
+        except Error as e :
             embed = tags_commands.tagerror()
+            raise e
+
         else:
             embed = tags_commands.tagsucceed()
 
