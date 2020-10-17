@@ -19,10 +19,8 @@ async def main(self, message):
         await message.channel.send(result)
     else:
         await message.channel.send(embed=embed)  
+
         
-    
-
-
 def handle_tag_commands(command, message, message_parts):
     """
     Handles the different types of tag commands
@@ -44,6 +42,7 @@ def handle_tag_commands(command, message, message_parts):
         del message_parts[:3]
         tag_contents = separator.join(message_parts)
 
+        # create mongo object
         oid = ObjectId()
         mydict = {
         "_id": oid, 
@@ -51,13 +50,13 @@ def handle_tag_commands(command, message, message_parts):
         "server_id":message.channel.id,
         "owner_id":message.author.id,
         "content": tag_contents,
-        "timestamp":Timestamp(datetime.datetime.today(), 0)
-        }
+        "timestamp":Timestamp(datetime.datetime.today(), 0)}
 
         # Get our db instance
         db = database.DBClient().get_db()
         tag_collection = db.Tags2020
 
+        # error handling
         try:
             x = tag_collection.insert_one(mydict)
         except mongo_error.DuplicateKeyError:
