@@ -5,6 +5,11 @@
     - os
     - sys
     - discord.py (v1.4.1)
+    - numpy
+    - opencv
+    - pymongo
+    - wand
+    - dnspython
 
 ## Instructions to run:
 1) Run ``` pip install -r requirements.txt ``` to install the requirements
