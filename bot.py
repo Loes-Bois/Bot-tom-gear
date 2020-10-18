@@ -1,13 +1,11 @@
 import discord
 import os_helper
-import os
 
 # Load env variables
 from dotenv import load_dotenv
 load_dotenv()
 
 import commands.handle_cmd as cmds
-
 
 class BottomBot(discord.Client):
     # Set the token to pound on default
@@ -27,10 +25,9 @@ class BottomBot(discord.Client):
         if message.content == "ping":
             await message.channel.send("pong")
 
-
 try:
     # Get the token
-    bot_token = os.getenv("BOT_TOKEN")
+    bot_token = os_helper.get_env_var("BOT_TOKEN")
 
     if (bot_token is None):
         raise Exception("A token was not passed as a environment variable")
