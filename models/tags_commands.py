@@ -32,6 +32,23 @@ def tagsucceed():
 	embed=set_author(embed) 
 	return embed
 
+def tagdelete():
+	embed=discord.Embed(title="Tag deleted", description="Errry Nice, You deleted your tag!! :D", color=0x07ed58)
+	embed=set_author(embed) 
+	return embed
+
+def notagdelete():
+	embed=discord.Embed(title="Tag was not deleted", description="Tag could not be found or you do not own it", color=0xe10e0e)
+	embed=set_author(embed) 
+	return embed
+
+def notenoughargs():
+	embed=discord.Embed(title="Please enter a tagname", description="Enter a tag name to complete the command", color=0xe10e0e)
+	embed=set_author(embed) 
+	return embed
+
 def set_author(embed):
 	embed.set_author(name="Bot-Tom-Gear", icon_url="https://cdn.discordapp.com/avatars/759261058698706976/36481f81386257f8434c7bcea1f8590c.webp?size=1024")
 	return embed
+
+

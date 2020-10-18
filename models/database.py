@@ -3,7 +3,6 @@ import os_helper
 from dotenv import load_dotenv
 load_dotenv()
 
-
 class DBClient:
     class __DBClient:
         def __init__(self):
