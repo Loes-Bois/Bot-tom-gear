@@ -7,31 +7,38 @@ import math
 import wand
 import io
 
+from models import read_messages
+
 async def main(self, message):
     message_parts = message.content.split(" ")
 
-    url = message.attachments[0].url if len(message.attachments) > 0 else False
+    # read recent messages and find image
+    url = await read_messages.find_recent_image(message.channel.id, message.id)
+
+    # read message attachments
+    url = message.attachments[0].url if len(message.attachments) > 0 else url
 
     # if no attachment check for embeddeds
     url = message.embeds[0].url if len(message.embeds) > 0 else url
     url = message_parts[2] if (len(message_parts)) > 2 else url
+    try:
+        if(url):
+            # Load the image from the URL
+            img = load_image(url)
+            img = make_magic(img, 2)
 
-    #TODO read recent message on channel to find latest image and make it scuffed
-    # await readm.find_recent_image(message.channel.id, message.id)
-    
-    if(url):
-        # Load the image from the URL
-        img = load_image(url)
-        img = make_magic(img, 2)
+            # Convert the imge to a byte stream and place it as an attachment
+            f = io.BytesIO(img.make_blob())
+            attachment = discord.File(f, 'cool_image.png')
 
-        # Convert the imge to a byte stream and place it as an attachment
-        f = io.BytesIO(img.make_blob())
-        attachment = discord.File(f, 'cool_image.png')
+            # Send the resultant image
+            await message.channel.send(file=attachment)
+        else:
+            await message.channel.send("Oy mate I need a image")
+    except:
+        print("Error loading image")
+        await message.channel.send("Oy mate, there was an error making the image")
 
-        # Send the resultant image
-        await message.channel.send(file=attachment)
-    else:
-        await message.channel.send("Oy mate I need a image")
 
 def load_image(url):
     res = requests.get(url) # Load the URL into the request library
