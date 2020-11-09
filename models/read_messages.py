@@ -28,7 +28,6 @@ async def find_recent_image(channel_id, message_id):
             
     for message in messages:
         # print(message)
-        print(message['content'])
         if(message['content'] != ""):
             match = re.search(urlRegexImage, message['content'])
             print(match)
@@ -37,6 +36,4 @@ async def find_recent_image(channel_id, message_id):
         if(len(message['attachments']) > 0):
             if('url' in message['attachments'][0].keys()):
                 return message['attachments'][0]['url']
-        
-
     return None
