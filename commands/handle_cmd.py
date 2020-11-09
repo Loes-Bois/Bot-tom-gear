@@ -11,7 +11,7 @@ async def handle(self, message):
         await avatar.main(self, message)
     elif(message_content.startswith("magik")):
         await magik.main(self, message)
-    elif(message_content.startswith("tag") or message_content.startswith("tags") or message_content.startswith("t")):
+    elif(message_content.startswith("tag") or message_content.startswith("tags")):
         await tags.main(self, message)
     else:
         await message.channel.send("Errrrny nice")

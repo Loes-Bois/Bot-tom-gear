@@ -2,6 +2,7 @@ from urllib.request import urlopen
 import cv2	
 import io	
 import aiohttp
+import re
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -9,8 +10,9 @@ load_dotenv()
 import os_helper
 
 
-#TODO make use of OAuth to read recent messages so we can call this endpoint	
 async def find_recent_image(channel_id, message_id):	
+
+    urlRegexImage = "^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:\/?#[\]@!\$&'\(\)\*\+,;=.]+(?:png|jpg|jpeg|svg|webp)?(.)$"
 
     url = f"https://discord.com/api/channels/{channel_id}/messages?before={message_id}&limit=40"
     messages = None
@@ -25,6 +27,12 @@ async def find_recent_image(channel_id, message_id):
             messages = await resp.json() 
             
     for message in messages:
+        # print(message)
+        if(message['content'] != ""):
+            match = re.search(urlRegexImage, message['content'])
+            print(match)
+            if(match):
+                return message['content']
         if(len(message['attachments']) > 0):
             if('url' in message['attachments'][0].keys()):
                 return message['attachments'][0]['url']
