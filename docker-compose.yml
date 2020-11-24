@@ -1,6 +1,7 @@
 version: '3'
 services:
   myservice:
+    container_name: bottom-bot
     environment: 
       - BOT_TOKEN 
       - DB_NAME 
